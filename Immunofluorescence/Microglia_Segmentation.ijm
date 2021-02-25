@@ -102,7 +102,7 @@ selectWindow("bin");
 run("Maximize");
 if (fix==true) {
 	do{
-		roiManager("reset");
+	    roiManager("reset");
 	    roiManager("Show None");
 	    run("Invert LUT");
 	    setTool("Paintbrush Tool");
