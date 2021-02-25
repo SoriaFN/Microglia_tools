@@ -17,14 +17,13 @@
  * Please acknowledge this script if you use it in your publication
  */
 
+requires("1.43f");
+run("Collect Garbage");
+
 //INITIALIZATION
 if (nImages==0) {
 	exit("No image open.");
 }
-if (nImages>1) {
-	exit("More than one image open.\nClose all non-relevant images");
-}
-run("Collect Garbage");
 roiManager("reset");
 roiManager("Show None");
 print("\\Clear");
