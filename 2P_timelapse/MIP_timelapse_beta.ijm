@@ -4,12 +4,12 @@
  *
  * BETA version (not tested)!!!
  *
- * This script generates a maximal intensity projections from 
- * tridimensional time-lapse images (xyzt hyperstacks).
+ * This script generates a maximal intensity projection from 
+ * a tridimensional time-lapse image (xyzt hyperstacks).
  * 
  * The script was designed to process hyperstacks from 
  * two-photon microglia time-lapse images. Hence, it allows for registration 
- * and cropping of individual cells (I will do this optional in the future)
+ * and cropping of individual cells (I will do this optional in the future).
  * 
  * PLANNED FEATURES:
  * -Optional cropping
