@@ -15,4 +15,4 @@ ImageJ macros to analyse microglial cells in live or fixed tissue.
 - **Microglia_Segmentation**  A script to segment individual cells from fluorescence images.
 ### 2-photon timelapse
 - **MIP_timelapse**  A script to generate registered Maximal Intensity Projections from tridimensional time-lapse images (hyperstack with xyzt).
-- **Pixels_surveyed**  A script to calculate instantaneous and cumulative area surveyed by microglia in two-photon time-lapse images.
+- **Pixels_surveyed**  A script to calculate instantaneous and cumulative area surveyed by microglia in two-photon time-lapse images. Can be used alongside "MIP_timelapse".
