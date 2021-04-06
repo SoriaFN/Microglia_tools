@@ -3,7 +3,7 @@ ImageJ macros to analyse microglial cells in live or fixed tissue.
 
 **(Please cite this repo if you use these scripts in your paper).**
 
-*This is work in progress. Some scripts need to be merged, and some need further testing.*
+*This is work in progress. Some scripts need to be merged, and some need further testing. More scripts will be added after further beta testing.*
 
 ## How to use
 1. Click on the ImageJ/FIJI script (".ijm" file) you want to download.
