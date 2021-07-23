@@ -42,12 +42,12 @@ Dialog.addCheckbox("Create MIP?", true);
 Dialog.addCheckbox("Apply Gaussian Filter", true);
 Dialog.addNumber("Analyze Particles lower limit", 100);
 Dialog.addNumber("Analyze Particles upper limit", 2000);
+Dialog.show();
 iba1_ch = Dialog.getChoice();
 mip = Dialog.getCheckbox();
 dogfilter = Dialog.getCheckbox();
 AP_lower = Dialog.getNumber();
 AP_upper = Dialog.getNumber();
-Dialog.show();
 
 //DIRECTORIES
 print("Segmenting "+ name + " ...");
