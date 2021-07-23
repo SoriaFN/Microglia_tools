@@ -14,7 +14,7 @@
  * ACHUCARRO BASQUE CENTER FOR NEUROSCIENCE
  * Sep 2020
  * 
- * Please acknowledge this script if you use it in your publication
+ * Please acknowledge this script if you use it in your publication.
  */
 
 requires("1.43f");
@@ -38,13 +38,17 @@ for (i=0; i<channels; i++){
 }
 Dialog.create("Choose your destiny...");
 Dialog.addChoice("Microglia channel", ch_list, "1");
-Dialog.addCheckbox("Create MIP?", true);
+if (slices>1) {
+	Dialog.addCheckbox("Create MIP?", true);
+}
 Dialog.addCheckbox("Apply Gaussian Filter", true);
 Dialog.addNumber("Analyze Particles lower limit", 100);
 Dialog.addNumber("Analyze Particles upper limit", 2000);
 Dialog.show();
 iba1_ch = Dialog.getChoice();
-mip = Dialog.getCheckbox();
+if (slices>1) {
+	mip = Dialog.getCheckbox();
+} else mip = false;
 dogfilter = Dialog.getCheckbox();
 AP_lower = Dialog.getNumber();
 AP_upper = Dialog.getNumber();
