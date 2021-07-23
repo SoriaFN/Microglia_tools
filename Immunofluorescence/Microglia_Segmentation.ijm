@@ -38,16 +38,12 @@ for (i=0; i<channels; i++){
 }
 Dialog.create("Choose your destiny...");
 Dialog.addChoice("Microglia channel", ch_list, "1");
-if (slices>1) {
-	Dialog.addCheckbox("Create MIP?", true);
-}
+Dialog.addCheckbox("Create MIP?", true);
 Dialog.addCheckbox("Apply Gaussian Filter", true);
 Dialog.addNumber("Analyze Particles lower limit", 100);
 Dialog.addNumber("Analyze Particles upper limit", 2000);
 iba1_ch = Dialog.getChoice();
-if (slices>1) {
-	mip = Dialog.getCheckbox();
-} else mip = false;
+mip = Dialog.getCheckbox();
 dogfilter = Dialog.getCheckbox();
 AP_lower = Dialog.getNumber();
 AP_upper = Dialog.getNumber();
