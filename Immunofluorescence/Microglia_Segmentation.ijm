@@ -106,7 +106,7 @@ if (fix==true) {
 	    roiManager("Show None");
 	    run("Invert LUT");
 	    setTool("Paintbrush Tool");
-	    run("Paintbrush Tool Options...", "brush=3");
+	    //run("Paintbrush Tool Options...", "brush=3");
 	    waitForUser("Fix the processes with 3px brush.\nUse original image as guide.\n \nALT+CLICK to paint.\nCLICK to clear.");
 	    run("Invert LUT");
 	    run("Convert to Mask");
