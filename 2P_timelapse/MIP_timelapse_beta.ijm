@@ -1,8 +1,6 @@
 /*
- * MIP Time-Lapse v.0.1
+ * MIP Time-Lapse v.0.2
  * --------------------
- *
- * BETA version (not tested)!!!
  *
  * This script generates a maximal intensity projection from 
  * a tridimensional time-lapse image (xyzt hyperstacks).
@@ -95,5 +93,4 @@ if (saveimage==1) {
 	saveAs("TIFF", dir+File.separator+"MIP_"+name);
 }
 run("Close All");
-selectWindow("Log");
-run("Close");
+print("Image saved in "+dir);
