@@ -1,5 +1,5 @@
 /* 
- * PIXELS SURVEYED v2.0
+ * PIXELS SURVEYED v2.1
  * --------------------
  * This macro allows to calculate the cumulative area surveyed by a single cell body in time-lapse images.
  * It will generate two excel files with the per-time-point data plus the cumulative data.
@@ -10,6 +10,9 @@
  * 
  * The image should be drift-corrected if possible.
  * (You can use "3D drift correction" in hyperstacks or "StackReg" in MIPs)
+ * 
+ * CHANGELOG v2.1 (Oct 2021)
+ * -Added option to apply Difference of Gaussians filter.
  *
  * Copyright (c) 2020, Federico N. Soria 
  * federico.soria@achucarro.org
@@ -30,17 +33,19 @@ run("Histogram", "stack");
 rename("Histogram");
 
 //GUI DIALOG
-Dialog.create("Pixels Surveyed v2.0");
-Dialog.addMessage("Pixels Surveyed 2.0");
+Dialog.create("Pixels Surveyed v2.1");
+Dialog.addMessage("Pixels Surveyed 2.1");
 Dialog.addMessage("(C) 2020 Federico N. Soria (federico.soria@achucarro.org)");
 Dialog.addMessage("This macro allows to quantify the cumulative area occupied by a cell in a time-lapse image. \nThis version needs 1 image already open, preferentially with one cell.");
 Dialog.addCheckbox("Create MIP?", false);
 Dialog.addCheckbox("Crop image and clean outside cell?", false);
+Dialog.addCheckbox("Apply DoG filter?", true);
 Dialog.addCheckbox("Enhance contrast (For images with low dynamic range)", true);
 Dialog.addNumber("      Contrast factor", 5);
 Dialog.show();
 mip=Dialog.getCheckbox();
 crop=Dialog.getCheckbox();
+dogfilter=Dialog.getCheckbox();
 contrast=Dialog.getCheckbox();
 contrast_coef=Dialog.getNumber();
 
@@ -61,10 +66,15 @@ print("\\Clear");
 //Directory
 dir=getDirectory("Choose a Directory to save files");
 
-//MIP creation, resize and contrast
+//MIP creation, filtering, resize and contrast
 if (mip==true) {
 	run("Z Project...", "projection=[Max Intensity] all");
 }
+
+if (dogfilter==true) {
+	DoG_filter();
+}
+
 if (contrast==true) {
 	run("Enhance Contrast", "saturated="+contrast_coef);
 	run("Apply LUT", "stack");
@@ -98,13 +108,13 @@ if (crop==true) {
 
 //Manual thresholding and binarization
 var thrs=0;
-selectImage(name);
+selectImage(name_max);
 run("Maximize");
 Stack.getStatistics(voxelCount, mean, min, max, stdDev);
 print("Min Value: "+min+"; Max value: "+max);
 run("Threshold...");
 waitForUser("Set Threshold", "Set Threshold level using the upper sliding bar \nThen click OK. \n \nDo not press Apply!\nCheck all slices to ensure all processes are connected!");
-selectImage(name); 
+selectImage(name_max); 
 getThreshold(thrs, upper);
 print("Threshold: "+thrs);
 
@@ -142,6 +152,12 @@ if (isOpen(name)){
 	selectWindow(name);
 	run("Close");	
 }
+
+if (isOpen(name_max)){
+	selectWindow(name);
+	run("Close");	
+}
+
 if (isOpen(name_bin)){
 	selectWindow(name_bin);
 	run("Close");	
@@ -173,3 +189,32 @@ selectWindow("Results");
 run("Close");
 run("Close All");
 print("DONE!!!");
+
+
+//HELPER FUNCTIONS
+function DoG_filter (){
+	Dialog.create("Difference of Gaussians Filter");
+	Dialog.addNumber("Minimum sigma", 1);
+	Dialog.addNumber("Maximum sigma", 500);
+	Dialog.show();
+	gmin=Dialog.getNumber();
+	gmax=Dialog.getNumber();
+			
+	name2=getTitle();
+	selectWindow(name2);
+	run("Grays");
+	run("Duplicate...", "title=min duplicate");
+	run("Gaussian Blur...", "sigma="+gmin+" stack");
+	selectWindow(name2);
+	run("Duplicate...", "title=max duplicate");
+	run("Gaussian Blur...", "sigma="+gmax+" stack");
+	imageCalculator("Subtract stack", "min","max");
+	selectWindow("max");
+	close();
+	selectWindow("min");
+	run("Enhance Contrast", "saturated=0.35");
+	rename("filtered");
+	selectWindow("filtered");
+	showMessageWithCancel("Is the filtered image OK?");
+	print("DoG filter applied with sigmas "+gmin+" and "+gmax);
+}
