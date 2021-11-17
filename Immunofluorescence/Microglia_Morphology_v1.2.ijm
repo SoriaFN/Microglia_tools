@@ -1,5 +1,5 @@
 /*
- * MICROGLIA MORPHOLOGY v1.1
+ * MICROGLIA MORPHOLOGY v1.2
  * -------------------------
  * 
  * Analyses cell morphology in binary images 
@@ -9,10 +9,12 @@
  * 2. Run the macro
  * 3. Results will appear in custom table
  * 
- * Changelog (v.1.1v - 16nov2021)
- * ------------------------------
+ * Changelog (v.1.2v - 17-11-2021)
+ * -------------------------------
  * 
  * -Fixed border of binary image (5 additional px per side)
+ * -Fixed Convex Hull Area calculation
+ * -Fixed "Black background" option autoselection
  * 
  * Federico N. Soria
  * ACHUCARRO BASQUE CENTER FOR NEUROSCIENCE
@@ -64,9 +66,10 @@ run("Select None");
 //DENSITY
 selectWindow("Area and Perimeter");
 run("Duplicate...", "title=Hull");
-setAutoThreshold("Default dark");
 run("Create Selection");
 run("Convex Hull");
+selectWindow("Hull");
+resetThreshold();
 run("Measure");
 hull = getResult("Area", 1);
 density = (area/hull);
