@@ -1,6 +1,6 @@
 /*
- * MICROGLIA MORPHOLOGY
- * --------------------
+ * MICROGLIA MORPHOLOGY v1.1
+ * -------------------------
  * 
  * Analyses cell morphology in binary images 
  * (1 cell per image).
@@ -8,6 +8,11 @@
  * 1. Open binary image
  * 2. Run the macro
  * 3. Results will appear in custom table
+ * 
+ * Changelog (v.1.1v - 16nov2021)
+ * ------------------------------
+ * 
+ * -Fixed border of binary image (5 additional px per side)
  * 
  * Federico N. Soria
  * ACHUCARRO BASQUE CENTER FOR NEUROSCIENCE
@@ -36,6 +41,7 @@ if (is("binary")==false) {
 }
 min_box = getNumber("Min box size for Fractal Count", 2);
 name = getTitle();
+run("Options...", "iterations=1 count=1 black do=Nothing");
 setForegroundColor(255, 255, 255);
 setBackgroundColor(0, 0, 0);
 run("Clear Results");
@@ -53,15 +59,20 @@ run("Measure");
 area = getResult("Area", 0);
 per = getResult("Perim.", 0);
 ff = (4*PI*area)/(pow(per, 2));
+run("Select None");
 
 //DENSITY
+selectWindow("Area and Perimeter");
 run("Duplicate...", "title=Hull");
+setAutoThreshold("Default dark");
+run("Create Selection");
 run("Convex Hull");
 run("Measure");
 hull = getResult("Area", 1);
 density = (area/hull);
 
 //FRACTAL DIMENSION
+selectWindow("Area and Perimeter");
 run("Duplicate...", "title=Outline");
 run("Select None");
 run("Outline");
