@@ -1,6 +1,6 @@
 /*
- * MICROGLIA MORPHOLOGY v1.2
- * -------------------------
+ * MICROGLIA MORPHOLOGY v1.2.1
+ * ---------------------------
  * 
  * Analyses cell morphology in binary images 
  * (1 cell per image).
@@ -9,13 +9,17 @@
  * 2. Run the macro
  * 3. Results will appear in custom table
  * 
- * Changelog (v.1.2v - 17-11-2021)
+ * Changelog (v.1.2 - 17-11-2021)
  * -------------------------------
- * 
  * -Fixed border of binary image (5 additional px per side)
  * -Fixed Convex Hull Area calculation
  * -Fixed "Black background" option autoselection
  * 
+ * Changelog (v.1.2.1 - 25-07-2023)
+ * ------------------------------- 
+ * -Replaced broken link (FractalCount now hosted in private GoogleDrive)
+ *
+ *
  * Federico N. Soria
  * ACHUCARRO BASQUE CENTER FOR NEUROSCIENCE
  * August 2020
@@ -28,7 +32,7 @@ requires("1.43f");
 List.setCommands;
     if (List.get("FractalCount ")=="") {
        showMessage("Required Plugin", "<html><h3>Macro requires ImageJ-PlugIn \"FractalCount\"!</h3>"
-     +"<a href=\"http://www.pvv.org/~perchrh/imagej/fractal.html\">Download</a>"); exit(););
+     +"<a href=\"https://drive.google.com/file/d/1f19vFmRIJopuRpt5ODEk2UoYmc0ClvJ9/view?usp=drive_link">Download</a>"); exit(););
     }
 
 //INITIALIZATION
