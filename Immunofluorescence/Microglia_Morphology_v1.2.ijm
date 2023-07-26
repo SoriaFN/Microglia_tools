@@ -32,7 +32,7 @@ requires("1.43f");
 List.setCommands;
     if (List.get("FractalCount ")=="") {
        showMessage("Required Plugin", "<html><h3>Macro requires ImageJ-PlugIn \"FractalCount\"!</h3>"
-     +"<a href=\"https://drive.google.com/file/d/1f19vFmRIJopuRpt5ODEk2UoYmc0ClvJ9/view?usp=drive_link">Download</a>"); exit(););
+     +"<a href=\"https://drive.google.com/file/d/1f19vFmRIJopuRpt5ODEk2UoYmc0ClvJ9/view?usp=drive_link\">Download</a>"); exit(););
     }
 
 //INITIALIZATION
