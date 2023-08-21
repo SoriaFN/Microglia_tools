@@ -1,5 +1,5 @@
 # Microglia ImageJ Tools
-ImageJ macros to analyse microglial cells in live or fixed tissue. Used in papers from GlioMatrix Lab
+ImageJ macros to analyse microglial cells in live or fixed tissue. Used in papers from GlioMatrixLab
 
 **Please cite these scripts if you use them in your paper:**
 
