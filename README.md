@@ -1,8 +1,8 @@
 # Microglia ImageJ Tools
 ImageJ macros to analyse microglial cells in live or fixed tissue. Used in papers from GlioMatrix Lab
 
-**Please cite these scripts if you use them in your paper:**
-Soria FN. *Microglia ImageJ Tools v0.9.0. ImageJ scripts for analysis of two-photon time-lapse images of microglia*. Zenodo, 2023. DOI:10.5281/zenodo.8268201.
+Please cite these scripts if you use them in your paper:
+**Soria FN. *Microglia ImageJ Tools v0.9.0. ImageJ scripts for analysis of two-photon time-lapse images of microglia*. Zenodo, 2023. DOI:10.5281/zenodo.8268201.**
 [![DOI](https://zenodo.org/badge/341842086.svg)](https://zenodo.org/badge/latestdoi/341842086)
 
 *This is work in progress. Some scripts need to be merged, and some need further testing. More scripts will be added after further beta testing.*
