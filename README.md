@@ -23,3 +23,7 @@ Please cite these scripts if you use them in your paper:
 ### 2-photon timelapse
 - **MIP_timelapse**  A script to generate drift-corrected Maximal Intensity Projections from tridimensional time-lapse images (hyperstack with xyzt).
 - **Pixels_surveyed**  A script to calculate instantaneous and cumulative area surveyed by microglia in two-photon time-lapse images. Can be used in combination with "MIP_timelapse".
+- ### Manual tracking (beta)
+- **Image_prep**  A script to register 2-channel timelapse using HyperStackReg, using only 1 of the channels to compute transformation.
+- **Tracking**  A script to store in ROImanager the tracks generated using Manual Tracking plugin.
+- **Measure_ECM**  A script to generate circular ROIs in each frame of a timelapse, using a previously generated track as reference.
