@@ -1,4 +1,5 @@
-//Open the tif image
+//Open the tif image you want to register
+//(requires "HyperStackReg" plugin from ved-sharma, https://github.com/ved-sharma/HyperStackReg)
 
 //PREPROCESSING
 name=getTitle();
