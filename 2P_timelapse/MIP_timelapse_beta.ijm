@@ -21,7 +21,7 @@
 //REQUIREMENTS
 requires("1.53c");
 List.setCommands;
-    if (List.get("StackReg ")=="") {
+    if (List.get("StackReg")=="") {
        showMessage("Required Plugin", "<html><h3>Macro requires additional Plugin \"StackReg\"!</h3>"
      +"<a href=\"http://bigwww.epfl.ch/thevenaz/stackreg\">Download</a>"); exit(););
     }
@@ -57,7 +57,7 @@ while (reg==1) {
 	typeReg=Dialog.getChoice();
 	print("Registering with algorithm "+typeReg+" ...");
 	selectWindow("MAX_"+name);
-	run("StackReg ", "transformation=["+typeReg+"]");
+	run("StackReg", "transformation=["+typeReg+"]");
 	print("Registration DONE");
 	selectWindow("MAX_"+name);
 	run("Enhance Contrast...", "saturated="+contrast);
