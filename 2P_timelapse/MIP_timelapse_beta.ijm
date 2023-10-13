@@ -1,5 +1,5 @@
 /*
- * MIP Time-Lapse v.0.2
+ * MIP Time-Lapse v.0.5
  * --------------------
  *
  * This script generates a maximal intensity projection from 
@@ -15,13 +15,15 @@
  * 
  * Federico N. Soria (February 2021) 
  * federico.soria@achucarro.org
- * 
+ *
+ * Update Oct 2023: There might be a conflict between "StackReg_" and "StackReg".
+ * If this happens, just change the name of the plugin to "StackReg_".
  */
 
 //REQUIREMENTS
 requires("1.53c");
 List.setCommands;
-    if (List.get("StackReg")=="") {
+    if (List.get("StackReg ")=="") {
        showMessage("Required Plugin", "<html><h3>Macro requires additional Plugin \"StackReg\"!</h3>"
      +"<a href=\"http://bigwww.epfl.ch/thevenaz/stackreg\">Download</a>"); exit(););
     }
@@ -57,7 +59,7 @@ while (reg==1) {
 	typeReg=Dialog.getChoice();
 	print("Registering with algorithm "+typeReg+" ...");
 	selectWindow("MAX_"+name);
-	run("StackReg", "transformation=["+typeReg+"]");
+	run("StackReg ", "transformation=["+typeReg+"]");
 	print("Registration DONE");
 	selectWindow("MAX_"+name);
 	run("Enhance Contrast...", "saturated="+contrast);
